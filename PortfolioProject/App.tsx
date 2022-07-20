@@ -1,12 +1,48 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator, HeaderTitle } from "react-navigation-stack";
+
+import Home from './screens/HomeScreen';
+import Models from './screens/3DModelsScreen';
+import LineArts from './screens/LineArtsScreen';
+import Header from './components/CustomHeader';
+// import { Header } from './components/CustomHeader';
+
+const screens = {
+  Home: {
+    screen: Home,
+  },
+  Models: {
+    screen: Models,
+  },
+  LineArts: {
+    screen: LineArts,
+  },
+}
+
+
+
+const AppNavigator = createStackNavigator(screens, {
+    defaultNavigationOptions:{ 
+      //headerShown: false,
+      headerTitle: <Header />,
+      headerStyle: {
+        height: Dimensions.get('window').height / 3.5,
+      }
+    },
+  },
+)
+
+
+const Navigator = createAppContainer(AppNavigator);
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Navigator/>
   );
 }
 
