@@ -1,5 +1,6 @@
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 import React from "react";
+import { useNavigation } from '@react-navigation/native';
 
 import NavBar from "./NavBar";
 
@@ -7,7 +8,7 @@ import NavBar from "./NavBar";
 export default function Header(){
     return(
         <View style={styles.container}>
-            <View style={styles.container}>
+            <View style={[styles.container, styles.textContainer]}>
                 <Text style={styles.h2}>KINGA WRONA's</Text>
                 <Text style={styles.h1}>PORTFOLIO</Text>
             </View>
@@ -19,11 +20,13 @@ export default function Header(){
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: '100%',
-        // flex: 1,
+        height: Dimensions.get('window').height /4,
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
+    },
+    textContainer: {
+        paddingTop: 20,
     },
     h1: {
         fontSize: 72,
