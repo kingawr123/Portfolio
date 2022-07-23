@@ -1,9 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
 import React from 'react';
+
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { TransitionSpecs } from '@react-navigation/stack';
 
 import Home from './screens/HomeScreen';
 import Models from './screens/3DModelsScreen';
@@ -15,10 +17,13 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+      <Header/>
       <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name='Home' component={Home} options={{headerShown: false}}></Stack.Screen>
-        <Stack.Screen name='Models' component={Models} options={{headerShown: false}}/>
-        <Stack.Screen name='LineArts' component={LineArts} options={{headerShown: false}}/>
+        <Stack.Screen name='Home' component={Home} options={{headerShown: false, animation: 'fade'}}></Stack.Screen>
+        <Stack.Group>
+          <Stack.Screen name='Models' component={Models} options={{headerShown: false, animation: 'fade'}}/>
+          <Stack.Screen name='LineArts' component={LineArts} options={{headerShown: false, animation: 'fade'}}/>
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );

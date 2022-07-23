@@ -5,7 +5,7 @@ import Header from "../components/CustomHeader";
 export default function Models(){
     return(
         <View style={styles.container}>
-            <Header />
+            <Text>3DMODEL</Text>
         </View>
     )
 }

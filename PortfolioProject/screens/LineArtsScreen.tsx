@@ -5,7 +5,7 @@ import Header from "../components/CustomHeader";
 export default function LineArts(){
     return(
         <View style={styles.container}>
-            <Header />
+            <Text>LINEARTS</Text>
         </View>
     )
 }
