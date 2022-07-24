@@ -12,7 +12,13 @@ import Models from './screens/3DModelsScreen';
 import LineArts from './screens/LineArtsScreen';
 import Header from './components/CustomHeader';
 
-const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Home: undefined;
+  Models: undefined;
+  LineArts: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
@@ -29,11 +35,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

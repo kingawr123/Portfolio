@@ -12,19 +12,20 @@ import NavBar from "../components/NavBar";
 export default function Home(){
     return(
         <View style={styles.container}>
-            {/* <Header /> */}
+            <Text>HOME</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#ffffff',
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: 30,
+      width: '100%',
+      height: '100%',
+   
     },
-      
-})
+  });

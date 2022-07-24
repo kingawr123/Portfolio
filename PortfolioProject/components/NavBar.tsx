@@ -6,31 +6,27 @@ import { useNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { colors } from "../assets/Assets";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../App";
+
+type homeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
 
 export default function NavBar(){
-
-    const navigation = useNavigation();
-
+    const navigationHome = useNavigation<homeScreenProp>();
     return(
         <View style={styles.container}>
             <View style={styles.sep}>
                 <View>
-                    {/* działa ale podkreśla? idk o co chodzi */}
-                    <TouchableOpacity onPress={() => navigation.navigate('Home')}><Text style={styles.text}>HOME</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigationHome.navigate('Home')}><Text style={styles.text}>HOME</Text></TouchableOpacity>
                 </View> 
                 <View style={[styles.container, styles.tabs]}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Models')}><Text style={styles.text}>3D MODELS</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('LineArts')}><Text style={styles.text}>LINE-ARTS</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigationHome.navigate('Models')}><Text style={styles.text}>3D MODELS</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigationHome.navigate('LineArts')}><Text style={styles.text}>LINE-ARTS</Text></TouchableOpacity>
                 </View>
             </View>
         </View>
     );
 }
-
-{/* <TouchableOpacity onPress={() => navigation.navigate('Home')}><Text style={styles.text}>HOME</Text></TouchableOpacity></View> 
-<View style={[styles.container, styles.tabs]}>
-    <TouchableOpacity onPress={() => navigation.navigate('Models')}><Text style={styles.text}>3D MODELS</Text></TouchableOpacity>
-    <TouchableOpacity onPress={() => navigation.navigate('LineArts')}><Text style={styles.text}>LINE-ARTS</Text></TouchableOpacity> */}
 
 const styles = StyleSheet.create({
     container: {
@@ -40,10 +36,12 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 5,
+        paddingHorizontal: 30,
     },  
     tabs: {
         justifyContent: 'flex-end',
+        width: 'auto',
+        paddingRight: 5,
     }, 
     text: {
         borderRightWidth: 1,
@@ -53,6 +51,7 @@ const styles = StyleSheet.create({
         paddingLeft: 8,
         paddingRight: 8,
         color: colors.navText,
+        fontSize:15
     } ,
     sep: {
         borderBottomWidth: 1,
