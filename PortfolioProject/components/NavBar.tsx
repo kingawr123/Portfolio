@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
+import EStyleSheet from 'react-native-extended-stylesheet';
 import { TouchableOpacity } from "react-native";
 
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 
 import { colors } from "../assets/Assets";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -17,18 +17,18 @@ export default function NavBar(){
         <View style={styles.container}>
             <View style={styles.sep}>
                 <View>
-                    <TouchableOpacity onPress={() => navigationHome.navigate('Home')}><Text style={styles.text}>HOME</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigationHome.navigate('Home')}><Text style={[styles.text ,Dimensions.get('window').width<800 ? styles.textPhone : null]}>HOME</Text></TouchableOpacity>
                 </View> 
                 <View style={[styles.container, styles.tabs]}>
-                    <TouchableOpacity onPress={() => navigationHome.navigate('Models')}><Text style={styles.text}>3D MODELS</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigationHome.navigate('LineArts')}><Text style={styles.text}>LINE-ARTS</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigationHome.navigate('Models')}><Text style={[styles.text ,Dimensions.get('window').width<800 ? styles.textPhone : null]}>3D MODELS</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigationHome.navigate('LineArts')}><Text style={[styles.text ,Dimensions.get('window').width<800 ? styles.textPhone : null]}>LINE-ARTS</Text></TouchableOpacity>
                 </View>
             </View>
         </View>
     );
 }
 
-const styles = StyleSheet.create({
+const styles = EStyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
@@ -36,13 +36,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 30,
+        paddingHorizontal: '5%',
     },  
     tabs: {
         justifyContent: 'flex-end',
         width: 'auto',
         paddingRight: 5,
     }, 
+    textPhone: {
+        fontSize: '15rem',
+    } ,
     text: {
         borderRightWidth: 1,
         borderRightColor: colors.navSeps,
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
         paddingLeft: 8,
         paddingRight: 8,
         color: colors.navText,
-        fontSize:15
+        fontSize: '6rem',
     } ,
     sep: {
         borderBottomWidth: 1,

@@ -1,12 +1,10 @@
-import { StyleSheet, View, Text, Button } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
-import { useNavigation, NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import Header from "../components/CustomHeader";
 import React from "react";
-import NavBar from "../components/NavBar";
+
+import { StyleSheet, View, Text, Button } from "react-native";
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+
+
 
 
 export default function Home(){
